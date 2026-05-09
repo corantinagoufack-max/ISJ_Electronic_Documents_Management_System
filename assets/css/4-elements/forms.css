@@ -1,0 +1,54 @@
+/* Lean Form specific refinements */
+.lean-form {
+    max-width: 750px;
+    /* Slightly wider to accommodate two columns */
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.full-width {
+    grid-column: span 2;
+}
+
+/* Modern File Drop Zone */
+.file-drop-zone {
+    border: 2px dashed #cbd5e1;
+    border-radius: 8px;
+    padding: 30px;
+    text-align: center;
+    background: #f8fafc;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.file-drop-zone:hover {
+    border-color: #3498db;
+    background: #f1f5f9;
+}
+
+.file-drop-zone p {
+    margin-top: 10px;
+    color: #64748b;
+    font-size: 0.85rem;
+}
+
+/* Header styling for the card */
+.form-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.form-header h2 {
+    color: #2c3e50;
+    margin: 10px 0 5px;
+}
+
+.form-header p {
+    color: #94a3b8;
+    font-size: 0.9rem;
+}

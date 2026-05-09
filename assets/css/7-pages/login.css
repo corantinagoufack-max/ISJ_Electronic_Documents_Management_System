@@ -1,0 +1,210 @@
+/* ── LOGIN PAGE LAYOUT ───────────────────────────────────── */
+.login-body {
+    background-color: var(--color-bg-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 450px;
+    padding: 20px;
+}
+
+/* ── HOME NAVIGATION BUTTON ──────────────────────────────── */
+.btn-home-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #64748b;
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+    padding: 10px 16px;
+    background: var(--color-white);
+    border-radius: 10px;
+    border: 1px solid var(--color-border);
+    width: fit-content;
+    transition: all 0.2s ease;
+}
+
+.btn-home-link:hover {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+    background: #f0f9ff;
+    transform: translateX(-3px);
+}
+
+/* ── LOGIN CARD ─────────────────────────────────────────── */
+.login-card {
+    background: var(--color-white);
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
+    text-align: center;
+}
+
+.login-header .logo {
+    height: 60px;
+    margin-bottom: 15px;
+}
+
+.login-header h1 {
+    margin: 10px 0 5px;
+    color: var(--color-text-main);
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.login-header p {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 30px;
+}
+
+/* ── FORM GROUPS & LABELS ────────────────────────────────── */
+.form-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.form-group label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--color-text-main);
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.forgot-link {
+    font-size: 0.75rem;
+    color: #64748b;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.forgot-link:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+/* ── INPUTS & SVG ICON POSITIONING ────────────────────────── */
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Targets the SVG icons from your icon() helper */
+.input-icon {
+    position: absolute;
+    left: 15px;
+    color: #94a3b8;
+    display: flex;
+    pointer-events: none;
+    font-size: 1.1rem;
+}
+
+.input-wrapper input,
+.input-wrapper select {
+    width: 100%;
+    padding: 12px 12px 12px 45px !important;
+    background: var(--color-input-bg);
+    border: 1px solid transparent;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    transition: 0.3s;
+    appearance: none;
+    /* Removes default dropdown arrow to keep UI clean */
+}
+
+.input-wrapper input:focus,
+.input-wrapper select:focus {
+    border-color: var(--color-primary);
+    background: #fff;
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.1);
+}
+
+.toggle-password-btn {
+    position: absolute;
+    right: 15px;
+    cursor: pointer;
+    color: #94a3b8;
+    display: flex;
+    z-index: 10;
+}
+
+.toggle-password-btn:hover {
+    color: var(--color-primary);
+}
+
+/* ── BUTTONS & ACTIONS ───────────────────────────────────── */
+.btn-login {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: background 0.3s;
+    margin-top: 10px;
+}
+
+.btn-login:hover {
+    background-color: var(--color-primary-hover);
+}
+
+.signup-prompt {
+    margin-top: 25px;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+}
+
+.signup-prompt a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+/*  ALERTS */
+.alert-success {
+    background: #f0fdf4;
+    color: #166534;
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #bbf7d0;
+}
+
+.login-footer {
+    text-align: center;
+    margin-top: 25px;
+    color: var(--color-text-muted);
+    font-size: 0.8rem;
+}

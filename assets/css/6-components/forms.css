@@ -1,0 +1,130 @@
+/* Container sizing and centering */
+.card-container {
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+    min-height: 70vh;
+}
+
+.modern-form {
+    width: 100%;
+    max-width: 800px;
+    /* Increased size for a more dominant look */
+    background: #ffffff;
+    padding: 3rem;
+    border-radius: 16px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border: 1px solid #e2e8f0;
+}
+
+/* Layout for side-by-side fields */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.form-group {
+    margin-bottom: 1.8rem;
+}
+
+.form-group label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    color: #1e293b;
+    font-size: 0.95rem;
+}
+
+/* Icons inside labels */
+.form-group label .icon svg {
+    width: 18px;
+    height: 18px;
+    fill: #64748b;
+}
+
+/* Inputs, Selects, and Focus States */
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 1rem;
+    background-color: #f8fafc;
+    transition: all 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #0f172a;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(15, 23, 42, 0.08);
+}
+
+/* Action Buttons Area */
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 16px;
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid #f1f5f9;
+}
+
+/* Button Variants */
+.btn-save {
+    background: #0f172a;
+    color: #ffffff;
+    padding: 14px 28px;
+    border-radius: 10px;
+    border: none;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-save:hover {
+    background: #1e293b;
+}
+
+.btn-secondary {
+    color: #64748b;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.btn-secondary:hover {
+    color: #0f172a;
+}
+
+/* Header Actions (Dashboard Button) */
+.header-right .btn-dashboard {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 8px;
+    color: #475569;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.header-right .btn-dashboard:hover {
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+    color: #0f172a;
+}

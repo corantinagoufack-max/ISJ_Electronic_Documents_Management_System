@@ -1,0 +1,42 @@
+/* SETTINGS */
+@import url('1-settings/variables.css');
+@import url('1-settings/colors.css');
+@import url('1-settings/typography.css');
+
+
+/* ELEMENTS */
+@import url('4-elements/base.css');
+
+/* LAYOUT */
+@import url('5-layout/container.css');
+
+/* COMPONENTS */
+@import url('6-components/buttons.css');
+@import url('6-components/alerts.css');
+@import url('6-components/forms.css');
+
+/* PAGES */
+@import url('7-pages/signup.css');
+@import url('7-pages/login.css');
+@import url('7-pages/2fa.css');
+@import url('7-pages/dashboard.css');
+@import url('7-pages/users.css');
+@import url('7-pages/documents.css');
+@import url('7-pages/notifications.css');
+@import url('7-pages/profile.css');
+@import url('7-pages/Mydocuments.css');
+@import url('7-pages/versions.css');
+@import url('7-pages/view.css');
+@import url('7-pages/shared.css');
+@import url('7-pages/share.css');
+@import url('7-pages/edit.css');
+@import url('7-pages/search.css');
+@import url('7-pages/upload.css');
+@import url('7-pages/usermanagement.css');
+@import url('7-pages/folder-browser.css');
+@import url('7-pages/passwordreset.css');
+@import url('7-pages/verify-password.css');
+@import url('7-pages/index.css');
+
+/* RESPONSIVE — must be last so it wins */
+@import url('8-responsive/responsive.css');

@@ -1,0 +1,25 @@
+:root {
+    /* COLORS */
+    --primary: #1e293b;
+    --secondary: #3498db;
+    --secondary-dark: #2980b9;
+
+    --white: #ffffff;
+
+    --gray-100: #f8fafc;
+    --gray-200: #f1f5f9;
+    --gray-300: #e2e8f0;
+
+    --text: #1e293b;
+    --text-light: #64748b;
+
+    /* SPACING */
+    --radius: 12px;
+    --radius-sm: 8px;
+
+    /* SHADOW */
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+
+    /* TRANSITION */
+    --transition: 0.3s ease;
+}

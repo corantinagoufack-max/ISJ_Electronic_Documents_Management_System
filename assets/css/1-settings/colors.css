@@ -1,0 +1,24 @@
+:root {
+    /* Primary Colors */
+    --color-primary: #3498db;
+    /* The blue from your Login button */
+    --color-primary-hover: #2980b9;
+
+    /* Neutral Colors */
+    --color-bg-light: #f4f7f6;
+    /* Light grey background */
+    --color-white: #ffffff;
+    --color-text-main: #2c3e50;
+    /* Dark navy for headings */
+    --color-text-muted: #7f8c8d;
+    /* Grey for labels/placeholders */
+
+    /* Input & Borders */
+    --color-border: #dcdde1;
+    --color-input-bg: #e9ecef;
+    /* Light grey input fill */
+
+    /* Shadows */
+    --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
