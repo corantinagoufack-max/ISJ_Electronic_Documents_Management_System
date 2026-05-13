@@ -267,15 +267,15 @@ $typeIcons = [
         }
 
         .content-search-highlight {
-            background: #fef3c7;
-            border-left: 4px solid #f59e0b;
+            background: #dbe8f3;
+            border-left: 4px solid #0b69f5;
             padding: 0.75rem 1rem;
             border-radius: 8px;
             margin-bottom: 1rem;
         }
 
         .content-search-highlight label {
-            color: #92400e;
+            color: #071870;
             font-weight: 700;
         }
 
@@ -489,13 +489,13 @@ $typeIcons = [
                     <div class="search-form-grid">
                         <div class="search-field full-width content-search-highlight">
                             <label for="content_only">
-                                <i class="fas fa-file-alt"></i>Search INSIDE Documents (Content Only)
+                                <i class="fas fa-file-alt"></i>Search INSIDE Documents 
                             </label>
                             <input type="text" id="content_only" name="content_only"
                                 value="<?php echo htmlspecialchars($content_only); ?>"
                                 placeholder="Type any word or phrase that appears INSIDE PDF, Word, or image files..."
-                                style="border-color: #f59e0b; background: #fffbeb;">
-                            <span class="field-hint"><i class="fas fa-search"></i> This searches ONLY within document content (the actual text inside files), not titles or descriptions</span>
+                                style="border-color: #6fc0f3; background: #fffbeb;">
+                            <span class="field-hint"><i class="fas fa-search"></i> This searches ONLY within document content, not titles or descriptions</span>
                         </div>
                     </div>
 
