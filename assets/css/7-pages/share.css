@@ -1,0 +1,260 @@
+.main-content {
+    margin-left: var(--sidebar-width, 280px);
+    padding: 2rem;
+}
+
+.card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .06);
+    margin-bottom: 1.5rem;
+}
+
+.card h3 {
+    font-size: .9rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: .75rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr auto;
+    gap: 12px;
+    align-items: flex-end;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-group label {
+    font-size: .72rem;
+    font-weight: 700;
+    color: #374151;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+}
+
+.form-group input,
+.form-group select {
+    padding: 9px 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: .88rem;
+    font-family: inherit;
+    outline: none;
+}
+
+.btn-share {
+    padding: 10px 20px;
+    background: #2c3e50;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: .88rem;
+    cursor: pointer;
+    align-self: flex-end;
+    white-space: nowrap;
+}
+
+.share-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.share-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.user-info strong {
+    display: block;
+    font-size: .88rem;
+    color: #0f172a;
+}
+
+.user-info span {
+    font-size: .76rem;
+    color: #94a3b8;
+}
+
+.perm-badge {
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: .7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.perm-view {
+    background: #f0f9ff;
+    color: #0369a1;
+    border: 1px solid #bae6fd;
+}
+
+.perm-download {
+    background: #f0fdf4;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+}
+
+.perm-edit {
+    background: #fef9c3;
+    color: #854d0e;
+    border: 1px solid #fef08a;
+}
+
+.btn-remove {
+    background: #fff;
+    color: #dc2626;
+    border: 1px solid #fecaca;
+    border-radius: 6px;
+    padding: 5px 12px;
+    font-size: .78rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.alert-success {
+    background: #dcfce7;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.alert-error {
+    background: #fee2e2;
+    color: #b91c1c;
+    border: 1px solid #fca5a5;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.doc-ref {
+    background: #f8fafc;
+    border-radius: 10px;
+    padding: 14px;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 8px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    min-height: 42px;
+    cursor: text;
+}
+
+.user-tag {
+    background: #e0f2fe;
+    color: #0369a1;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: .78rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.user-tag button {
+    background: none;
+    border: none;
+    color: #0369a1;
+    cursor: pointer;
+    font-size: .9rem;
+}
+
+#emailInput {
+    border: none;
+    outline: none;
+    font-size: .88rem;
+    flex: 1;
+    min-width: 150px;
+}
+
+/* ── Share page responsive fixes ── */
+@media (max-width: 768px) {
+
+    /* Stack the 3-column form row into single column */
+    .form-row {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Share button fills full width when stacked */
+    .btn-share {
+        width: 100%;
+        align-self: stretch;
+        padding: 12px 20px;
+        text-align: center;
+    }
+
+    /* Share row: wrap badge + remove button below name */
+    .share-row {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .share-row>div:last-child {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    /* Email input: don't shrink below usable size */
+    #emailInput {
+        min-width: 100px;
+    }
+
+    /* Page top bar (title + back button): wrap and stack */
+    .main-content>div[style*="justify-content:space-between"] {
+        flex-wrap: wrap !important;
+        gap: 10px !important;
+    }
+
+    .main-content>div[style*="justify-content:space-between"] a {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+
+    /* Doc reference box: tighter */
+    .doc-ref {
+        padding: 10px;
+        gap: 10px;
+    }
+
+    /* Card padding: tighter on phones */
+    .card {
+        padding: 1rem;
+    }
+
+    /* Remove button: full width on very small screens */
+    .btn-remove {
+        width: 100%;
+        text-align: center;
+    }
+}

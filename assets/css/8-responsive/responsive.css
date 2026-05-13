@@ -1,0 +1,596 @@
+/* =============================================================
+   responsive.css — ISJ-DMS  v2.0
+   Strategy: col-hide-sm classes on TH/TD for surgical
+   column hiding. Everything else via layout overrides.
+
+   Breakpoints:
+     xl  : >1280px
+     lg  : ≤1280px  (laptops)
+     md  : ≤1024px  (tablets landscape)  → sidebar off-canvas
+     sm  : ≤768px   (tablets / large phones)
+     xs  : ≤480px   (phones)
+     xxs : ≤360px   (small phones)
+   ============================================================= */
+
+/* ═══════════════════════════════════════════════════════════
+   0. GLOBAL TOKENS & MOBILE CHROME
+   ═══════════════════════════════════════════════════════════ */
+
+html { box-sizing: border-box; }
+*, *::before, *::after { box-sizing: inherit; }
+
+/* Sidebar off-canvas toggle button */
+.sidebar-toggle {
+    display: none;
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    z-index: 1100;
+    background: #1e293b;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0,0,0,.3);
+    transition: background .2s, transform .15s;
+}
+.sidebar-toggle:hover  { background: #334155; transform: scale(1.05); }
+.sidebar-toggle:active { transform: scale(.97); }
+.sidebar-toggle svg    { width: 22px; height: 22px; }
+
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: rgba(15,23,42,.6);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+}
+.sidebar-overlay.active { display: block; }
+
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px 8px;
+    color: #2c3e50;
+    font-size: 1.5rem;
+    line-height: 1;
+    border-radius: 6px;
+    transition: background .15s;
+}
+.hamburger:hover { background: #f1f5f9; }
+body.sidebar-open { overflow: hidden !important; }
+
+
+/* ═══════════════════════════════════════════════════════════
+   3. LAPTOP  ≤1280px
+   ═══════════════════════════════════════════════════════════ */
+@media (max-width: 1280px) {
+    .stats-grid                      { grid-template-columns: repeat(2, 1fr) !important; }
+    .dashboard-content-area          { grid-template-columns: 1fr !important; }
+    .side-panels, .side-column-wrapper {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 16px !important;
+    }
+    .upload-layout                   { grid-template-columns: 1.1fr 0.9fr !important; }
+    .doc-layout                      { grid-template-columns: 1.5fr 1fr !important; }
+    .search-form-grid.cols-4         { grid-template-columns: 1fr 1fr !important; }
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   4. TABLET LANDSCAPE  ≤1024px  → sidebar off-canvas
+   ═══════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+
+    .sidebar {
+        position: fixed !important;
+        left: -300px !important;
+        top: 0 !important;
+        height: 100vh !important;
+        z-index: 1000 !important;
+        width: 280px !important;
+        transition: left .3s cubic-bezier(.4,0,.2,1) !important;
+        overflow-y: auto !important;
+        box-shadow: none !important;
+    }
+    .sidebar.open {
+        left: 0 !important;
+        box-shadow: 4px 0 30px rgba(0,0,0,.25) !important;
+    }
+    .sidebar-toggle { display: flex !important; }
+
+    .main-content,
+    .dashboard-wrapper .main-content {
+        margin-left: 0 !important;
+        max-width: 100% !important;
+        padding: 1.5rem 1.25rem !important;
+        padding-top: 68px !important;
+    }
+
+    .stats-grid                    { grid-template-columns: repeat(2, 1fr) !important; }
+    .dashboard-content-area        { grid-template-columns: 1fr !important; }
+    .side-panels, .side-column-wrapper {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 16px !important;
+    }
+    .upload-layout  { grid-template-columns: 1fr !important; }
+    .doc-layout     { grid-template-columns: 1fr !important; }
+    .fb-tree        { width: 210px !important; }
+    .role-grid      { grid-template-columns: repeat(2, 1fr) !important; max-width: 100% !important; }
+    .footer-grid    { grid-template-columns: 1fr 1fr !important; gap: 2rem !important; }
+    .search-form-grid.cols-3 { grid-template-columns: 1fr 1fr !important; }
+    .search-form-grid.cols-4 { grid-template-columns: 1fr 1fr !important; }
+
+    .content-header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 1rem !important;
+    }
+    .header-actions   { width: 100% !important; flex-wrap: wrap !important; gap: .75rem !important; }
+    .header-nav-tabs  { width: 100% !important; flex-wrap: wrap !important; }
+
+    /* Sidebar internals */
+    .sidebar-brand  { padding: 1.25rem 1.25rem .75rem !important; }
+    .brand-text h3  { font-size: 1rem !important; }
+    .sidebar-nav    { padding: .75rem 1rem !important; }
+    .sidebar-footer { padding: 1rem 1.25rem !important; }
+    .btn-upload     { margin: 0 0 .75rem !important; width: 100% !important; }
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   5. TABLET / LARGE PHONE  ≤768px
+   ═══════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+    /* ───────────────────────────────────────────────────────
+       DOCUMENT TABLES
+       Visible: Type icon | Title | Actions
+       Hidden : Category, Version, Status, Uploaded,
+                Author, Shared By, Permission, Shared On, Modified
+    ─────────────────────────────────────────────────────── */
+    .col-hide-sm { display: none !important; }
+
+    /* Tables: no horizontal scroll needed since hidden cols free up space */
+    .lean-table,
+    .modern-table {
+        width: 100% !important;
+        min-width: 0 !important;
+        table-layout: auto !important;
+    }
+
+    /* Type icon cell — tight */
+    .lean-table .file-icon-cell,
+    .modern-table .file-icon-cell {
+        width: 38px !important;
+        padding-left: 10px !important;
+        padding-right: 4px !important;
+    }
+
+    /* Title cell — takes remaining space */
+    .lean-table th:nth-child(2),
+    .lean-table td:nth-child(2),
+    .modern-table th:nth-child(2),
+    .modern-table td:nth-child(2) {
+        width: auto !important;
+    }
+
+    /* Actions cell — fixed width, right-aligned */
+    .lean-table th:last-child,
+    .lean-table td:last-child,
+    .modern-table th:last-child,
+    .modern-table td:last-child {
+        width: 108px !important;
+        text-align: right !important;
+        padding-right: 10px !important;
+    }
+
+    /* Title text: truncate to prevent overflow */
+    .lean-table td:nth-child(2) strong,
+    .modern-table td:nth-child(2) strong {
+        display: block !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        max-width: 200px !important;
+    }
+    /* Subtitle/subject text — smaller, subdued */
+    .lean-table td:nth-child(2) small,
+    .modern-table td:nth-child(2) small {
+        font-size: .72rem !important;
+        color: #94a3b8 !important;
+        display: block !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        max-width: 200px !important;
+    }
+
+    /* Table rows — slightly more comfortable tap targets */
+    .lean-table td,
+    .modern-table td {
+        padding: 14px 8px !important;
+    }
+    .lean-table th,
+    .modern-table th {
+        padding: 10px 8px !important;
+        font-size: .68rem !important;
+    }
+
+    /* Table container: visible overflow (no scrollbar) */
+    .table-container {
+        overflow-x: visible !important;
+        border-radius: 14px !important;
+    }
+
+    /* ───────────────────────────────────────────────────────
+       USER MANAGEMENT TABLE
+       Visible: Name | Status | Actions
+       Hidden : Email (col-hide-sm) | Role (col-hide-sm)
+    ─────────────────────────────────────────────────────── */
+
+    /* Name cell stretches */
+    .modern-table .user-name {
+        max-width: none !important;
+        font-size: .88rem !important;
+    }
+
+    /* Status cell — keep compact */
+    .status-icon { font-size: .82rem !important; }
+
+    /* Actions cell wraps on small screens */
+    .actions-cell {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 5px !important;
+    }
+    .action-form { flex-wrap: wrap !important; gap: 4px !important; }
+
+    /* ───────────────────────────────────────────────────────
+       PUBLIC NAVBAR
+    ─────────────────────────────────────────────────────── */
+    .navbar         { padding: .6rem 0 !important; }
+    .nav-container  { padding: 0 1rem !important; position: relative !important; }
+    .nav-links {
+        display: none !important;
+        position: absolute !important;
+        top: calc(100% + 2px) !important;
+        left: 0 !important; right: 0 !important;
+        background: #fff !important;
+        flex-direction: column !important;
+        gap: 0 !important;
+        box-shadow: 0 12px 24px rgba(0,0,0,.12) !important;
+        z-index: 2000 !important;
+        border-radius: 0 0 12px 12px !important;
+        padding: .25rem 0 .5rem !important;
+        border-top: 1px solid #f1f5f9 !important;
+    }
+    .nav-links.mobile-open { display: flex !important; }
+    .nav-links a {
+        padding: .9rem 1.5rem !important;
+        border-bottom: 1px solid #f8fafc !important;
+        font-size: .95rem !important;
+        width: 100% !important;
+    }
+    .nav-links a:last-child { border-bottom: none !important; }
+    .login-btn {
+        margin: .5rem 1rem .25rem !important;
+        text-align: center !important;
+        border-radius: 8px !important;
+        display: block !important;
+    }
+    .hamburger { display: flex !important; }
+
+    /* ───────────────────────────────────────────────────────
+       HERO / PUBLIC PAGES
+    ─────────────────────────────────────────────────────── */
+    .hero           { padding: 56px 0 !important; }
+    h1              { font-size: 2rem !important; }
+    h2              { font-size: 1.6rem !important; }
+    .hero p         { font-size: 1rem !important; }
+    .hero-buttons   { flex-direction: column !important; align-items: center !important; gap: 1rem !important; }
+    .btn-large      { padding: 14px 28px !important; font-size: 1rem !important; }
+    .role-grid      { grid-template-columns: 1fr !important; max-width: 480px !important; margin: 0 auto !important; }
+    .footer-grid    { grid-template-columns: 1fr !important; gap: 1.75rem !important; }
+    .footer         { padding: 48px 0 28px !important; }
+
+    /* ───────────────────────────────────────────────────────
+       APP LAYOUT
+    ─────────────────────────────────────────────────────── */
+    .stats-grid          { grid-template-columns: repeat(2, 1fr) !important; }
+    .side-panels,
+    .side-column-wrapper { grid-template-columns: 1fr !important; }
+
+    .page-header,
+    .search-page-header,
+    .page-toolbar,
+    .page-header-container {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: .75rem !important;
+    }
+    .page-header-container .btn-create,
+    .page-header .btn-back,
+    .search-page-header .btn-back {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+
+    .filter-bar  { flex-direction: column !important; gap: .75rem !important; }
+    .filter-tabs { width: 100% !important; flex-wrap: wrap !important; gap: 4px !important; }
+    .tab-item    { flex: 1 !important; text-align: center !important; min-width: 80px !important; }
+    .search-box  { width: 100% !important; }
+
+    /* Forms */
+    .form-row                  { grid-template-columns: 1fr !important; }
+    .upload-layout             { grid-template-columns: 1fr !important; }
+    .search-form-grid.cols-2,
+    .search-form-grid.cols-3,
+    .search-form-grid.cols-4   { grid-template-columns: 1fr !important; }
+
+    /* Folder browser */
+    .fb-body { flex-direction: column !important; }
+    .fb-tree {
+        width: 100% !important; height: 190px !important;
+        border-right: none !important;
+        border-bottom: 1px solid #e2e8f0 !important;
+        flex-shrink: 0 !important;
+    }
+    .fb-toolbar        { flex-wrap: wrap !important; gap: .5rem !important; padding: .6rem 1rem !important; }
+    .fb-breadcrumb     { flex: 1 1 100% !important; order: -1 !important; }
+    .fb-toolbar-right  { flex-wrap: wrap !important; gap: 6px !important; }
+
+    /* View doc */
+    .doc-layout     { grid-template-columns: 1fr !important; }
+
+    /* Modal */
+    .modal-content  {
+        width: 96% !important; margin: 2% auto !important;
+        padding: 18px !important; border-radius: 14px !important;
+    }
+
+    /* Auth */
+    .login-container, .signup-container, .tfa-container { padding: 12px !important; }
+    .login-card, .signup-card, .tfa-card               { padding: 28px 22px !important; }
+
+    /* Dashboard */
+    .user-profile-header .user-info { display: none !important; }
+    .capacity-stats { grid-template-columns: 1fr 1fr !important; }
+
+    /* Upload */
+    .drop-zone     { padding: 2rem 1rem !important; }
+    .drop-zone h2  { font-size: 1rem !important; }
+    .upload-tips   { margin-top: 1rem !important; }
+    .upload-form-card { padding: 1.25rem !important; }
+
+    /* FB grid */
+    .fb-content    { padding: .75rem !important; }
+    .fb-file-grid  { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   6. PHONE  ≤480px
+   ═══════════════════════════════════════════════════════════ */
+@media (max-width: 480px) {
+
+    .main-content,
+    .dashboard-wrapper .main-content {
+        padding: .75rem !important;
+        padding-top: 62px !important;
+    }
+
+    h1          { font-size: 1.6rem !important; }
+    h2          { font-size: 1.3rem !important; }
+    .page-title { font-size: 1.35rem !important; }
+    .stat-value { font-size: 1.5rem !important; }
+
+    .stats-grid          { grid-template-columns: 1fr !important; gap: 10px !important; }
+    .stat-card           { padding: 1rem !important; }
+    .side-panels,
+    .side-column-wrapper { grid-template-columns: 1fr !important; gap: 10px !important; }
+
+    /* Title truncate tighter */
+    .lean-table td:nth-child(2) strong,
+    .modern-table td:nth-child(2) strong { max-width: 130px !important; }
+    .lean-table td:nth-child(2) small,
+    .modern-table td:nth-child(2) small  { max-width: 130px !important; }
+
+    /* Actions column tighter */
+    .lean-table th:last-child,
+    .lean-table td:last-child,
+    .modern-table th:last-child,
+    .modern-table td:last-child { width: 90px !important; }
+
+    /* Action icon buttons: compact */
+    .action-group { gap: 3px !important; }
+    .action-group a { width: 28px !important; height: 28px !important; }
+    .action-group a svg { width: 13px !important; height: 13px !important; }
+
+    /* User management actions */
+    .actions-cell { flex-direction: column !important; gap: 5px !important; }
+    .btn-action   { padding: .45rem .7rem !important; font-size: .75rem !important; }
+    .btn-edit, .btn-save, .btn-disable, .btn-enable {
+        font-size: .75rem !important;
+        padding: .45rem .8rem !important;
+    }
+
+    /* Toolbar */
+    .page-toolbar           { gap: .5rem !important; }
+    .search-form            { flex-direction: column !important; width: 100% !important; }
+    .search-form input      { max-width: none !important; }
+    .search-form button     { width: 100% !important; }
+
+    .filters {
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        padding-bottom: 4px !important;
+        gap: 6px !important;
+        scrollbar-width: none !important;
+    }
+    .filters::-webkit-scrollbar { display: none !important; }
+
+    .capacity-stats  { grid-template-columns: 1fr !important; }
+    .cap-types       { gap: 4px !important; }
+
+    .fb-tree         { height: 150px !important; }
+    .fb-file-grid    { grid-template-columns: 1fr !important; }
+    .fb-btn span     { display: none !important; }
+
+    .login-card, .signup-card { padding: 22px 16px !important; }
+    .tfa-card                 { padding: 20px 14px !important; }
+    .reset-card               { padding: 22px 16px !important; }
+
+    .modal-content {
+        width: 98% !important; margin: 1% auto !important;
+        max-height: 90vh !important; overflow-y: auto !important;
+        padding: 14px !important;
+    }
+
+    .hero-buttons .btn { width: 100% !important; justify-content: center !important; }
+
+    .sidebar-toggle { top: 10px !important; left: 10px !important; width: 40px !important; height: 40px !important; }
+    .meta-grid      { grid-template-columns: 1fr !important; }
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   7. VERY SMALL  ≤360px
+   ═══════════════════════════════════════════════════════════ */
+@media (max-width: 360px) {
+    .main-content { padding: .5rem !important; padding-top: 58px !important; }
+    .stat-card    { padding: .75rem !important; }
+    .filter-tabs .tab-item { padding: 8px 10px !important; font-size: .77rem !important; }
+    .lean-table td:nth-child(2) strong,
+    .modern-table td:nth-child(2) strong { max-width: 90px !important; }
+    .lean-table th:last-child,
+    .lean-table td:last-child,
+    .modern-table th:last-child,
+    .modern-table td:last-child { width: 80px !important; }
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   8. PRINT
+   ═══════════════════════════════════════════════════════════ */
+@media print {
+    .sidebar, .sidebar-toggle, .sidebar-overlay,
+    .action-group, .actions-cell, .fb-toolbar,
+    .btn-upload, .btn-create, .hamburger { display: none !important; }
+    .main-content  { margin: 0 !important; padding: 0 !important; }
+    .lean-table, .modern-table { min-width: 0 !important; table-layout: auto !important; }
+    .col-hide-sm   { display: table-cell !important; }
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   9. MOBILE TABLE POLISH
+   ═══════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+
+    /* Zebra rows more visible on small screens */
+    .lean-table tbody tr:nth-child(even),
+    .modern-table tbody tr:nth-child(even) {
+        background: #f8fafc !important;
+    }
+    .lean-table tbody tr:hover,
+    .modern-table tbody tr:hover {
+        background: #f1f5f9 !important;
+    }
+
+    /* File type icon cell — centered vertically */
+    .lean-table .file-icon-cell,
+    .modern-table .file-icon-cell {
+        vertical-align: middle !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+    /* Action group — compress into row */
+    .action-group {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        gap: 4px !important;
+        justify-content: flex-end !important;
+    }
+
+    /* Each action button — uniform icon-button size */
+    .action-group a,
+    .action-group button,
+    .fb-file-btn {
+        width: 30px !important;
+        height: 30px !important;
+        padding: 0 !important;
+        border-radius: 7px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        flex-shrink: 0 !important;
+    }
+
+    /* User management status cell */
+    .status-icon {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 4px !important;
+        font-size: .8rem !important;
+    }
+
+    /* User name — bold, larger tap target */
+    .modern-table .user-name {
+        font-weight: 600 !important;
+        font-size: .88rem !important;
+        vertical-align: middle !important;
+    }
+
+    /* Versions page form label */
+    .form-group label {
+        font-size: .82rem !important;
+    }
+
+    /* Page header back button — full width pill */
+    .btn-back {
+        width: 100% !important;
+        text-align: center !important;
+        justify-content: center !important;
+        display: flex !important;
+    }
+}
+
+@media (max-width: 480px) {
+
+    /* Even tighter action buttons on phones */
+    .action-group a,
+    .action-group button,
+    .fb-file-btn {
+        width: 28px !important;
+        height: 28px !important;
+        border-radius: 6px !important;
+    }
+
+    /* Table header: all caps, smaller */
+    .lean-table th,
+    .modern-table th {
+        font-size: .65rem !important;
+        text-transform: uppercase !important;
+        letter-spacing: .04em !important;
+    }
+
+    /* Row padding tighter on phones */
+    .lean-table td,
+    .modern-table td {
+        padding: 12px 6px !important;
+    }
+}
