@@ -494,7 +494,6 @@ $typeIcons = [
                             <input type="text" id="content_only" name="content_only"
                                 value="<?php echo htmlspecialchars($content_only); ?>"
                                 placeholder="Type any word or phrase that appears INSIDE PDF, Word, or image files..."
-<<<<<<< HEAD
                                 style="border-color: #f59e0b; background: #fffbeb;">
                             <span class="field-hint"><i class="fas fa-search"></i> This searches ONLY within document content (the actual text inside files), not titles or descriptions</span>
                         </div>
